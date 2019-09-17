@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+  hivemq:
+    # user: $PGUSER
+    image: hivemq/hivemq4:latest
+    ports:
+      - "2880:8080"
+      - "1884:1883"
+    # volumes:
+    #   - ./prometheus-central/etc/prometheus:/etc/prometheus
+    #   - ./prometheus-central/db:/prometheus
+    # command:
+    #  - '--ulimit nofile=500000:500000'
+
+  mosquitto:
+    # user: $PGUSER
+    image: eclipse-mosquitto:latest
+    ports:
+      - "9001:9001"
+      - "1883:1883"
+ 
+  nodered:
+    # user: $PGUSER
+    image: nodered/node-red-docker:latest
+    ports:
+      - "1880:1880"
+    links:
+      - mosquitto
+      - hivemq
