@@ -33,8 +33,12 @@ client.on_log=on_log
 
 client.loop_start() #start the loop
 print("connecting to broker")
-client.connect(broker_address) #connect to broker
-
+try:
+    client.connect(broker_address) #connect to broker
+except:
+    print ("connection failed")
+    exit(2)
+    
 while not client.connected_flag: #wait in loop until conected
     # in worst case there is an exit after 5 try
     if client.connection_wait>=10: 
