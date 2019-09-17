@@ -17,15 +17,15 @@ def on_log(client, userdata, level, buf):
 broker_address="127.0.0.1"
 #broker_address="iot.eclipse.org"
 print("creating new instance")
-client = mqtt.Client("R1") 
+client = mqtt.Client("receiver-01") 
 client.on_message=on_message #attach function to callback
 client.on_log=on_log
 
 print("connecting to broker")
 client.connect(broker_address) #connect to broker
 client.loop_start() #start the loop
-print("Subscribing to topic","house/bulbs/bulb1")
-client.subscribe("house/bulbs/bulb1")
+print("Subscribing to topic","house/bulbs/+")
+client.subscribe("house/bulbs/+")
 client.subscribe("house/main-light")
 
 time.sleep(3600) # wait

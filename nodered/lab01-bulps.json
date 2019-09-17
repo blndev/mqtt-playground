@@ -1,0 +1,37 @@
+[
+    {
+        "id": "ccb41cbc.7a1f2",
+        "type": "mqtt out",
+        "z": "52f6a537.5c832c",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "4716385b.83f5f8",
+        "x": 683,
+        "y": 378,
+        "wires": []
+    },
+    {
+        "id": "4716385b.83f5f8",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "mosquitto-dc",
+        "broker": "mosquitto",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
