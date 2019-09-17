@@ -19,6 +19,8 @@ client.publish("house/main-light","OFF")#publish
 
 
 print("Subscribing to topic","house/bulbs/bulb1")
-client.subscribe("house/bulbs/bulb1")
+#no need to subscribe when you just want to send messages
+#client.subscribe("house/bulbs/bulb1")
 print("Publishing message to topic","house/bulbs/bulb1")
 client.publish("house/bulbs/bulb1","OFF")
+client.publish("house/bulbs/bulb2","ON")
