@@ -19,7 +19,8 @@ clientHMQ = mqtt.Client("iot-1-c2") #create new instance
 print("connecting to broker")
 clientMOQ.connect(broker_address) #connect to broker
 clientHMQ.connect(broker_address, 1884) #connect to broker
-
+time.sleep(10) # we should have a proper connection validation instead of waiting
+# see http://www.steves-internet-guide.com/client-connections-python-mqtt/
 clientMOQ.publish("house/main-light","OFF")#publish
 
 
