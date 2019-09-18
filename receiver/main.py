@@ -15,7 +15,6 @@ def on_message(client, userdata, message):
 def on_log(client, userdata, level, buf):
     print("log: ", buf)
 
-
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
         client.connected_flag = True  # set flag
@@ -26,14 +25,17 @@ def on_connect(client, userdata, flags, rc):
     else:
         print("Bad connection Returned code=", rc)
 
+# # not required to handle that because loop_start will do that for us
+# def on_disconnect(client, userdata, rc):
+#     logging.info("disconnecting reason  "  +str(rc))
+#     client.connected_flag=False
+#     client.disconnect_flag=True
 
 mqtt.Client.connected_flag = False  # successfull connection
 mqtt.Client.bad_connection_flag = False  # connection error indictor
 mqtt.Client.connection_retry = 0  # retry count
 
 
-broker_address = "127.0.0.1"
-# broker_address="iot.eclipse.org"
 print("creating new instance")
 client = mqtt.Client("receiver-01")
 client.on_message = on_message  # attach function to callback
@@ -41,9 +43,11 @@ client.on_connect = on_connect
 client.on_log = on_log
 
 client.loop_start()  # start the loop
+#client.username_pw_set(username="steve",password="password")
+
 print("connecting to broker...")
 try:
-    client.connect(broker_address)  # connect to broker
+    client.connect("127.0.0.1", 1883)  # connect to broker
 except Exception as e:
     print("connection failed:", e)
     exit(2)
